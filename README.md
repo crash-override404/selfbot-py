@@ -33,16 +33,16 @@ $ python3 helloworld.py -a IOSIPAD
 [HelloWorld](https://discord.gg/5jqbutB)
 
 ## Author
-Zero Cool / [@crash-override404](https://github.com/crash-override404) 
-Fadhiil Rachman / [@fadhiilrachman](https://www.instagram.com/fadhiilrachman)
+Zero Cool / [@crash-override404](https://github.com/crash-override404)  
+Fadhiil Rachman / [@fadhiilrachman](https://www.instagram.com/fadhiilrachman)  
 Alin / [@muhmursalind](https://github.com/muhmursalind)
 
 ## Support
 All Hello World Members :
-Tanduri a.k.a HelloTan / [@hellotan](https://github.com/hellotan)
-Fauzan Ardhana / [@fauzanardh](https://github.com/fauzanardh)
-Moe Poi ~ / [@moepoi](https://github.com/moepoi)
-Muhammad Fahri / [@FAHRIZTX](https://github.com/FAHRIZTX)
-Dosugamea / [@Dosugamea](https://github.com/Dosugamea)
-Dzin / [@dzingans](https://github.com/dzingans)
+Tanduri a.k.a HelloTan / [@hellotan](https://github.com/hellotan)  
+Fauzan Ardhana / [@fauzanardh](https://github.com/fauzanardh)  
+Moe Poi ~ / [@moepoi](https://github.com/moepoi)  
+Muhammad Fahri / [@FAHRIZTX](https://github.com/FAHRIZTX)  
+Dosugamea / [@Dosugamea](https://github.com/Dosugamea)  
+Dzin / [@dzingans](https://github.com/dzingans)  
 And others.
