@@ -4,6 +4,11 @@
 
 ----
 
+## Important
+First things you have to do is, clone this repository [linepy-modified](https://github.com/crash-override404/linepy-modified)
+and then you must to copy linepy folders, after all installation complete. Paste linepy folders to folder selfbot-py.  
+Please do not sell or rent this source code, because this is just for learning.
+
 ## Installation for Termux
 
 ```sh
