@@ -1619,7 +1619,7 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                 line.sendMessage(to, res)
             res = ''
     elif cmd == 'pendinglist':
-        if msg.toType != 2: return line.sendMessage(to, 'Failed display member list, use this command only on group chat')
+        if msg.toType != 2: return line.sendMessage(to, 'Failed display pending list, use this command only on group chat')
         group = line.getGroup(to)
         members = group.members
         if not members:
