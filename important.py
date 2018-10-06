@@ -7,7 +7,7 @@ from humanfriendly import format_timespan, format_size, format_number, format_le
 from threading import Thread
 from urllib.parse import urlencode, quote
 from pathlib import Path
-import time, random, sys, json, codecs, re, os, requests, ast, pytz, atexit, traceback, base64, pafy, livejson, timeago, math, argparse
+import time, random, sys, json, codecs, re, os, shutil, requests, ast, pytz, atexit, traceback, base64, pafy, livejson, timeago, math, argparse
 
 try:
     if __modified__ != 'Zero Cool':
