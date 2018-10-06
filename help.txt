@@ -8,6 +8,7 @@
 ├≽ {key}Author
 ├≽ {key}Status
 ├≽ {key}Abort
+├≽ {key}Error
 ├──「 Self 」
 ├≽ {key}MyProfile
 ├≽ {key}Profile
