@@ -110,13 +110,15 @@ def restartProgram():
     os.execl(python, python, *sys.argv)
 
 def logError(error, write=True):
+    errid = str(random.randint(100, 999))
+    filee = open('tmp/errors/%s.txt'%errid, 'w') if write else None
     if args.traceback: traceback.print_tb(error.__traceback__)
-    datetime_ = datetime.now(tz=pytz.timezone('Asia/Jakarta')).strftime('[ %Y-%m-%d %H:%M:%S ] ')
-    errorType = type(error).__name__
-    print ('++ Error : {error}'.format(error=error))
     if write:
+        traceback.print_tb(error.__traceback__, file=filee)
+        filee.close()
         with open('errorLog.txt', 'a') as e:
-            e.write('\n%s%s'%(str(datetime_), str(error)))
+            e.write('\n%s : %s'%(errid, str(error)))
+    print ('++ Error : {error}'.format(error=error))
 
 def command(text):
     pesan = text.lower()
@@ -297,6 +299,60 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
             aborted = True
         if not aborted:
             line.sendMessage(to, 'Failed abort, nothing to abort')
+    elif cmd.startswith('error'):
+        textt = removeCmd(text, setKey)
+        texttl = textt.lower()
+        cond = textt.split(' ')
+        res = '╭───「 Error 」'
+        res += '\n├ Usage : '
+        res += '\n│ • {key}Error'
+        res += '\n│ • {key}Error Logs'
+        res += '\n│ • {key}Error Reset'
+        res += '\n│ • {key}Error Detail <errid>'
+        res += '\n╰───「 Hello World 」'
+        if cmd == 'error':
+            line.sendMessage(to, parsingRes(res).format_map(SafeDict(key=setKey.title())))
+        elif cond[0].lower() == 'logs':
+            try:
+                filee = open('errorLog.txt', 'r')
+            except FileNotFoundError:
+                return line.sendMessage(to, 'Failed display error logs, error logs file not found')
+            errors = [err.strip() for err in filee.readlines()]
+            filee.close()
+            if not errors: return line.sendMessage(to, 'Failed display error logs, empty error logs')
+            res = '╭───「 Error Logs 」'
+            res += '\n├ List :'
+            parsed_len = len(errors)//200+1
+            no = 0
+            for point in range(parsed_len):
+                for error in errors[point*200:(point+1)*200]:
+                    if not error: continue
+                    no += 1
+                    res += '\n│ %i. %s' % (no, error)
+                    if error == errors[-1]:
+                        res += '\n╰───「 Hello World 」'
+                if res:
+                    if res.startswith('\n'): res = res[1:]
+                    line.sendMessage(to, res)
+                res = ''
+        elif cond[0].lower() == 'reset':
+            filee = open('errorLog.txt', 'w')
+            filee.write('')
+            filee.close()
+            shutil.rmtree('tmp/errors/', ignore_errors=True)
+            os.system('mkdir tmp/errors')
+            line.sendMessage(to, 'Success reset error logs')
+        elif cond[0].lower() == 'detail':
+            if len(cond) < 2:
+                return line.sendMessage(to, parsingRes(res).format_map(SafeDict(key=setKey.title())))
+            errid = cond[1]
+            if os.path.exists('tmp/errors/%s.txt' % errid):
+                with open('tmp/errors/%s.txt' % errid, 'r') as f:
+                    line.sendMessage(to, f.read())
+            else:
+                return line.sendMessage(to, 'Failed display details error, errorid not valid')
+        else:
+            line.sendMessage(to, parsingRes(res).format_map(SafeDict(key=setKey.title())))
     elif txt.startswith('setkey'):
         textt = removeCmd(text, setKey)
         texttl = textt.lower()
