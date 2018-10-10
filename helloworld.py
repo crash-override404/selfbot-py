@@ -1997,7 +1997,7 @@ def executeOp(op):
                     gids = line.getGroupIdsJoined()
                     for link in links:
                         if link not in tickets:
-                            tickets.append(ticket)
+                            tickets.append(link)
                     for ticket in tickets:
                         try:
                             group = line.findGroupByTicket(ticket)
@@ -2099,7 +2099,7 @@ def executeOp(op):
                     gids = line.getGroupIdsJoined()
                     for link in links:
                         if link not in tickets:
-                            tickets.append(ticket)
+                            tickets.append(link)
                     for ticket in tickets:
                         try:
                             group = line.findGroupByTicket(ticket)
