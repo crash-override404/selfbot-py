@@ -89,7 +89,7 @@ oepoll = OEPoll(line)
 tmp_text = []
 lurking = {}
 
-settings = livejson.File('setting.json')
+settings = livejson.File('setting.json', True, False, 4)
 
 bool_dict = {
     True: ['Yes', 'Active', 'Success', 'Open', 'On'],
