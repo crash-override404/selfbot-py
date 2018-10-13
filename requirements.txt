@@ -16,3 +16,17 @@ thrift==0.11.0
 timeago==1.0.8
 urllib3==1.23
 youtube-dl==2018.10.5
+PyQRCode
+datetime
+html5lib
+gtts
+googletrans
+wikiapi
+wikipedia
+paramiko
+qrcode
+ffmpeg-python
+timeago
+pillow
+MoviePy
+python-magic
