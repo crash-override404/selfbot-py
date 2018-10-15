@@ -61,6 +61,7 @@ try:
                 tokenFile = tokenPath.open('w+')
                 tokenFile.write(line.authToken)
                 tokenFile.close()
+                break
             except TalkException as talk_error:
                 print ('++ Error : %s' % talk_error.reason.replace('_', ' '))
                 if args.traceback: traceback.print_tb(talk_error.__traceback__)
