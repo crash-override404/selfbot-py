@@ -1191,19 +1191,21 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                             name = 'Unknown'
                         res += '\n│ %i. %s' % (no, name)
                         deleted.append(contact.mid)
-                elif texxt.lower() == 'all':
-                    for contact in contacts:
-                        if contact.mid not in cids and contact.mid in deleted:
-                            continue
-                        no += 1
-                        try:
-                            line.deleteContact(contact.mid)
-                            name = contact.displayName
-                        except TalkException:
-                            name = 'Unknown'
-                        res += '\n│ %i. %s' % (no, name)
-                        deleted.append(contact.mid)
-                        time.sleep(0.8)
+                    elif name.lower() == 'all':
+                        for contact in contacts:
+                            if contact.mid not in cids and contact.mid in deleted:
+                                continue
+                            no += 1
+                            try:
+                                line.deleteContact(contact.mid)
+                                name = contact.displayName
+                            except TalkException:
+                                name = 'Unknown'
+                            res += '\n│ %i. %s' % (no, name)
+                            deleted.append(contact.mid)
+                            time.sleep(0.8)
+                    else:
+                        line.sendMessage(to, 'Failed del friend with name `%s`, name not in list ♪' % name)
             if no == 0: res += '\n│ Nothing'
             res += '\n╰───「 Hello World 」'
             line.sendMessage(to, res)
@@ -1382,19 +1384,21 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                             name = 'Unknown'
                         res += '\n│ %i. %s' % (no, name)
                         deleted.append(contact.mid)
-                elif texxt.lower() == 'all':
-                    for contact in contacts:
-                        if contact.mid not in cids and contact.mid in deleted:
-                            continue
-                        no += 1
-                        try:
-                            line.unblockContact(contact.mid)
-                            name = contact.displayName
-                        except TalkException:
-                            name = 'Unknown'
-                        res += '\n│ %i. %s' % (no, name)
-                        deleted.append(contact.mid)
-                        time.sleep(0.8)
+                    elif name.lower() == 'all':
+                        for contact in contacts:
+                            if contact.mid not in cids and contact.mid in deleted:
+                                continue
+                            no += 1
+                            try:
+                                line.unblockContact(contact.mid)
+                                name = contact.displayName
+                            except TalkException:
+                                name = 'Unknown'
+                            res += '\n│ %i. %s' % (no, name)
+                            deleted.append(contact.mid)
+                            time.sleep(0.8)
+                    else:
+                        line.sendMessage(to, 'Failed unblock user with name `%s`, name not in list ♪' % name)
             if no == 0: res += '\n│ Nothing'
             res += '\n╰───「 Hello World 」'
             line.sendMessage(to, res)
@@ -1520,17 +1524,17 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                         leaved.append(group.id)
                         if to not in leaved:
                             line.sendMessage(to, 'Success leave group %s' % group.name)
+                    elif name.lower() == 'all':
+                        for gid in gids:
+                            if gid in leaved:
+                                continue
+                            line.leaveGroup(gid)
+                            leaved.append(gid)
+                            time.sleep(0.8)
+                        if to not in leaved:
+                            line.sendMessage(to, 'Success leave all group ♪')
                     else:
-                        line.sendMessage(to, 'Failed leave group with name `%s`, name not in list' % name)
-                elif texxt.lower() == 'all':
-                    for gid in gids:
-                        if gid in leaved:
-                            continue
-                        line.leaveGroup(gid)
-                        leaved.append(gid)
-                        time.sleep(0.8)
-                    if to not in leaved:
-                        line.sendMessage(to, 'Success leave all group')
+                        line.sendMessage(to, 'Failed leave group with name `%s`, name not in list ♪' % name)
         else:
             for res in ress:
                 line.sendMessage(to, parsingRes(res).format_map(SafeDict(key=setKey.title())))
@@ -1606,16 +1610,16 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                         line.acceptGroupInvitation(group.id)
                         accepted.append(group.id)
                         line.sendMessage(to, 'Success accept group %s' % group.name)
+                    elif name.lower() == 'all':
+                        for gid in gids:
+                            if gid in accepted:
+                                continue
+                            line.acceptGroupInvitation(group.id)
+                            accepted.append(group.id)
+                            time.sleep(0.8)
+                        line.sendMessage(to, 'Success accept all invitation group ♪')
                     else:
-                        line.sendMessage(to, 'Failed accept group with name `%s`, name not in list' % name)
-                elif texxt.lower() == 'all':
-                    for gid in gids:
-                        if gid in accepted:
-                            continue
-                        line.acceptGroupInvitation(group.id)
-                        accepted.append(group.id)
-                        time.sleep(0.8)
-                    line.sendMessage(to, 'Success accept all invitation group')
+                        line.sendMessage(to, 'Failed accept group with name `%s`, name not in list ♪' % name)
         elif texttl.startswith('reject '):
             texts = textt[7:].split(', ')
             rejected = []
@@ -1648,16 +1652,16 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                         line.rejectGroupInvitation(group.id)
                         rejected.append(group.id)
                         line.sendMessage(to, 'Success reject group %s' % group.name)
+                    elif name.lower() == 'all':
+                        for gid in gids:
+                            if gid in rejected:
+                                continue
+                            line.rejectGroupInvitation(group.id)
+                            rejected.append(group.id)
+                            time.sleep(0.8)
+                        line.sendMessage(to, 'Success reject all invitation group ♪')
                     else:
-                        line.sendMessage(to, 'Failed reject group with name `%s`, name not in list' % name)
-                elif texxt.lower() == 'all':
-                    for gid in gids:
-                        if gid in rejected:
-                            continue
-                        line.rejectGroupInvitation(group.id)
-                        rejected.append(group.id)
-                        time.sleep(0.8)
-                    line.sendMessage(to, 'Success reject all invitation group')
+                        line.sendMessage(to, 'Failed reject group with name `%s`, name not in list ♪' % name)
         else:
             for res in ress:
                 line.sendMessage(to, parsingRes(res).format_map(SafeDict(key=setKey.title())))
