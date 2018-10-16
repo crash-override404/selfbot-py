@@ -1624,7 +1624,7 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                         if group.id in rejected:
                             line.sendMessage(to, 'Already reject group %s' % group.name)
                             continue
-                        line.acceptGroupInvitation(group.id)
+                        line.rejectGroupInvitation(group.id)
                         rejected.append(group.id)
                         line.sendMessage(to, 'Success reject group %s' % group.name)
                     else:
@@ -1635,7 +1635,7 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                         if group.id in rejected:
                             line.sendMessage(to, 'Already reject group %s' % group.name)
                             continue
-                        line.acceptGroupInvitation(group.id)
+                        line.rejectGroupInvitation(group.id)
                         rejected.append(group.id)
                         line.sendMessage(to, 'Success reject group %s' % group.name)
                     else:
@@ -1644,7 +1644,7 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
                     for gid in gids:
                         if gid in rejected:
                             continue
-                        line.acceptGroupInvitation(group.id)
+                        line.rejectGroupInvitation(group.id)
                         rejected.append(group.id)
                         time.sleep(0.8)
                     line.sendMessage(to, 'Success reject all invitation group')
