@@ -105,6 +105,16 @@ settings['myProfile']['pictureStatus'] = profile.pictureStatus
 coverId = line.profileDetail['result']['objectId']
 settings['myProfile']['coverId'] = coverId
 
+# Check Json Data
+if not settings:
+    print ('##----- LOAD DEFAULT JSON -----##')
+    try:
+        default_settings = line.server.getJson('https://17hosting.id/default.json')
+        settings.update(default_settings)
+        print ('##----- LOAD DEFAULT JSON (Success) -----##')
+    except Exception:
+        print ('##----- LOAD DEFAULT JSON (Failed) -----##')
+
 def restartProgram():
     print ('##----- PROGRAM RESTARTED -----##')
     python = sys.executable
