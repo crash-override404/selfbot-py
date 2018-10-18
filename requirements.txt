@@ -26,7 +26,6 @@ wikipedia
 paramiko
 qrcode
 ffmpeg-python
-timeago
 pillow
 MoviePy
 python-magic
