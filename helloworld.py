@@ -254,7 +254,8 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
         line.logout()
         sys.exit('##----- CLIENT LOGOUT -----##')
     elif cmd == 'restart':
-        line.sendMessage(to, 'Bot will restarting')
+        line.sendMessage(to, 'Bot will restarting, please wait until the bot can operate ♪')
+        settings['restartPoint'] = to
         restartProgram()
     elif cmd == 'help':
         line.sendReplyMessage(msg_id, to, help())
@@ -379,13 +380,13 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
             line.sendMessage(to, parsingRes(res))
         elif texttl == 'on':
             if settings['setKey']['status']:
-                line.sendMessage(to, 'Setkey already active')
+                line.sendMessage(to, 'Failed activate setkey, setkey already active')
             else:
                 settings['setKey']['status'] = True
                 line.sendMessage(to, 'Success activated setkey')
         elif texttl == 'off':
             if not settings['setKey']['status']:
-                line.sendMessage(to, 'Setkey already deactive')
+                line.sendMessage(to, 'Failed deactivate setkey, setkey already deactive')
             else:
                 settings['setKey']['status'] = False
                 line.sendMessage(to, 'Success deactivated setkey')
@@ -1692,7 +1693,7 @@ def executeCmd(msg, text, txt, cmd, msg_id, receiver, sender, to, setKey):
     elif cmd == 'pendinglist':
         if msg.toType != 2: return line.sendMessage(to, 'Failed display pending list, use this command only on group chat')
         group = line.getGroup(to)
-        members = group.members
+        members = group.invitee
         if not members:
             return line.sendMessage(to, 'Failed display pending list, no one contact')
         res = '╭───「 Pending List 」'
@@ -2174,6 +2175,12 @@ def executeOp(op):
         logError(error)
 
 def runningProgram():
+    if settings['restartPoint'] is not None:
+        try:
+            line.sendMessage(settings['restartPoint'], 'Bot can operate again ♪')
+        except TalkException:
+            pass
+        settings['restartPoint'] = None
     while True:
         try:
             ops = oepoll.singleTrace(count=50)
