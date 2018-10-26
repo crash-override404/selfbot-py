@@ -46,6 +46,7 @@
         "status": false,
         "target": {}
     },
+    "restartPoint": null,
     "setKey": {
         "status": true,
         "key": "."
