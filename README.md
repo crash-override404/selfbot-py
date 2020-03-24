@@ -41,43 +41,43 @@ def something(*args, **kwargs):
 ```
 
 You can use the optional for hook.command
-* alt  
+* *alt*  
    Alternative command for one function  
    Type : tuple, Default : ()
-* title  
+* *title*  
    Make command name title in help message (not used when name is set)  
    Type : bool, Default : True
-* cmd_args  
+* *cmd_args*  
    Additional arguments for using this function (use this with prefix)  
    Type : list, Default : []
-* head  
+* *head*  
    Set this function will stored where in help message (if None will stored at first section)  
    Type : str, Default : None
-* name  
+* *name*  
    Set name displayed in help message  
    Type : str, Default : None
-* users  
+* *users*  
    Set users permission to use this command  
    Type : list, Default : ['ALL']
-* groups  
+* *groups*  
    Set groups permission to use this command  
    Type : list, Default : ['ALL']
-* permissions  
+* *permissions*  
    Set permissions to use this command  
    Type : list, Default : ['ALL']
-* inpart  
+* *inpart*  
    Set if you want call this command if anything in text contains command name or alt  
    Type : bool, Default : False
-* prefix  
+* *prefix*  
    Set if you want call this command if text prefix in command name or alt  
    Type : bool, Default : False
-* usecmd  
+* *usecmd*  
    Set if you want call this command only if cmd used  
    Type : bool, Default : True
-* register  
+* *register*  
    Set if you want register this command to help message  
    Type : bool, Default : True
-* defer  
+* *defer*  
    Set a lambda function to defer for execute after command executed  
    Type : lambda, Default : None
 
