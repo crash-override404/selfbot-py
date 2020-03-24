@@ -1,0 +1,60 @@
+{
+    "autoAdd": {
+        "status": false,
+        "message": "Hello @!, thanks for add me as your friend\nSelfbot by Hello World",
+        "reply": true
+    },
+    "autoJoin": {
+        "status": false,
+        "message": "Hello @!, thanks for invite me to this group\nSelfbot by Hello World",
+        "reply": true,
+        "ticket": false
+    },
+    "autoRead": false,
+    "autoRespond": {
+        "status": false,
+        "message": "Hello @!, thanks for your message this is auto respond\nSelfbot by Hello World"
+    },
+    "autoRespondMention": {
+        "status": false,
+        "message": "Hello @!, thanks for mentioned me, if your message is very important please leave it on personal chat\nSelfbot by Hello World"
+    },
+    "changeGroupPicture": [],
+    "changePictureProfile": false,
+    "changeCoverProfile": false,
+    "checkContact": false,
+    "checkPost": false,
+    "checkSticker": false,
+    "defaultReplyReader" : "Hello @!, come here join to chat",
+    "greet": {
+        "join": {
+            "status": false,
+            "message": "Hello @!, welcome to group {name}"
+        },
+        "leave": {
+            "status": false,
+            "message": "Good bye @!, see you next time"
+        }
+    },
+    "groups": [],
+    "myProfile": {
+        "coverId": "",
+        "displayName": "",
+        "pictureStatus": "",
+        "statusMessage": ""
+    },
+    "mimic": {
+        "status": false,
+        "target": {}
+    },
+    "public": false,
+    "restartPoint": null,
+    "setKey": {
+        "status": true,
+        "key": "."
+    },
+    "users": [],
+    "worker": 1,
+    "copyright": "If you respect the author please don't remove this copyright\n© 2018 Hello World",
+    "author_lineid": "You can add the author by line id, https://line.me/ti/p/~zero-cool404"
+}
