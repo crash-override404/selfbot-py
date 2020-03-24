@@ -94,7 +94,7 @@ class SelfbotHook:
             cmd = msg
         return cmd
 
-    def command(self, alt: tuple = (), title: bool = True, cmd_args: list = [], head: str = None, name: str = None, users: list = ['ALL'], groups: list = ['ALL'], permissions: list = ['ALL'], inpart: bool = False, prefix: bool = True, usecmd: bool = True, register: bool = True, defer=None):
+    def command(self, alt: tuple = (), title: bool = True, cmd_args: list = [], head: str = None, name: str = None, users: list = ['ALL'], groups: list = ['ALL'], permissions: list = ['ALL'], inpart: bool = False, prefix: bool = False, usecmd: bool = True, register: bool = True, defer=None):
         def __wrapper(func):
             if register:
                 if head not in self.commands:
@@ -118,7 +118,9 @@ class SelfbotHook:
                 command = name if name else func.__name__
                 if not msg.contentType:
                     msg_text = cmd if usecmd else txt
-                    if inpart and (msg_text.startswith(command) or msg_text.startswith(alt)):
+                    if prefix and (msg_text.startswith(command) or msg_text.startswith(alt)):
+                        checked = True
+                    elif inpart and (command in msg_text or any([True for x in alt if x in msg_text])):
                         checked = True
                     if checked:
                         execute = self.process(msg, users, groups, permissions)
