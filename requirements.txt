@@ -10,7 +10,7 @@ pafy==0.5.4
 pyasn1==0.4.4
 pytz==2018.5
 requests>=2.20.0
-rsa==4.0
+rsa==4.7
 six==1.11.0
 thrift==0.11.0
 timeago==1.0.8
